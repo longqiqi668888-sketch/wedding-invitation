@@ -3,21 +3,62 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>请帖内容后台</title>
+    <meta name="robots" content="noindex">
+    <title>婚礼请帖后台</title>
   </head>
   <body>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
+        window.netlifyIdentity.on('init', function (user) {
+          if (!user) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
         });
       }
+
+      CMS.registerPreviewStyle(`
+        html, body { margin: 0; min-height: 100%; background: #8c0c0c; font-family: "Songti SC", "Noto Serif SC", serif; }
+        .invite-preview { min-height: 100vh; padding: 34px 20px; box-sizing: border-box; background: radial-gradient(circle at 12% 8%, rgba(255,224,168,.2), transparent 18%), radial-gradient(circle at 88% 10%, rgba(255,216,151,.14), transparent 18%), linear-gradient(180deg,#820707,#b91516 53%,#790708); }
+        .invite-card { max-width: 390px; min-height: 630px; margin: 0 auto; padding: 34px 30px; box-sizing: border-box; text-align: center; color: #72120e; background: #fff8ed; border: 1px solid rgba(243,205,107,.9); border-radius: 28px; box-shadow: 0 22px 55px rgba(54,0,0,.38); }
+        .double-happiness { display: inline-flex; align-items: center; justify-content: center; width: 66px; height: 66px; border-radius: 50%; color: #ffe9ae; font-size: 36px; font-weight: 700; background: #a20d0d; border: 4px solid #f2d37a; box-shadow: 0 0 0 5px rgba(242,211,122,.25); }
+        .photo-frame { height: 145px; margin: 22px auto 22px; display: flex; align-items: flex-start; justify-content: center; padding-top: 12px; box-sizing: border-box; color: #875038; background: linear-gradient(180deg,#fffdf7,#fff1cf); border: 1px solid #ebc867; border-radius: 80px 80px 2px 2px; }
+        .couple-names { margin: 0; font-size: 37px; line-height: 1.18; letter-spacing: 2px; color: #851410; }
+        .invite-text { margin: 20px 0; font-size: 16px; line-height: 1.75; color: #8b3025; }
+        .date-pill { display: inline-block; padding: 13px 20px; margin: 5px 0 22px; border-radius: 999px; color: #8b1a16; background: #fff9ec; border: 1px solid #eecb6c; box-shadow: 0 5px 16px rgba(156,78,37,.16); }
+        .details { margin-top: 10px; padding-top: 18px; border-top: 1px dashed #e6c373; text-align: left; color: #783126; font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; font-size: 13px; line-height: 1.8; }
+        .details strong { color: #9e1713; }
+        .preview-note { max-width: 390px; margin: 16px auto 0; color: #fff0ca; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Microsoft YaHei", sans-serif; font-size: 12px; }
+      `, { raw: true });
+
+      var WeddingPreview = createClass({
+        render: function () {
+          var entry = this.props.entry;
+          var value = function (name, fallback) { return entry.getIn(['data', name]) || fallback; };
+          var groom = value('groom', '新郎姓名');
+          var bride = value('bride', '新娘姓名');
+          var date = value('date_zh', '婚礼日期');
+          var time = value('time', '婚礼时间');
+          var venue = value('venue', '婚礼地点');
+          var hall = value('hall', '宴会厅');
+          var invitation = value('invitation', '诚邀您参加我们的婚礼');
+          return h('div', { className: 'invite-preview' },
+            h('div', { className: 'invite-card' },
+              h('div', { className: 'double-happiness' }, '囍'),
+              h('div', { className: 'photo-frame' }, '新人照片'),
+              h('h1', { className: 'couple-names' }, groom + ' & ', h('br'), bride),
+              h('p', { className: 'invite-text' }, invitation),
+              h('div', { className: 'date-pill' }, date),
+              h('div', { className: 'details' },
+                h('div', {}, h('strong', {}, '时间：'), time),
+                h('div', {}, h('strong', {}, '地点：'), venue),
+                h('div', {}, h('strong', {}, '宴会厅：'), hall)
+              )
+            ),
+            h('div', { className: 'preview-note' }, '这是实时预览。左侧修改内容后，这里会立即更新。')
+          );
+        }
+      });
+      CMS.registerPreviewTemplate('settings', WeddingPreview);
     </script>
   </body>
 </html>
