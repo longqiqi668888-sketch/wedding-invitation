@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李翊旗 & 傅水娥 婚礼电子请帖</title>
+  <style>
+    :root {
+      --navy: #7a1010;
+      --blue-900: #8f1717;
+      --blue-700: #b51f1f;
+      --blue-500: #d83a32;
+      --blue-200: #fff1e6;
+      --purple-900: #8c1c16;
+      --purple-700: #b92721;
+      --purple-500: #e94a3f;
+      --purple-200: #fff7ee;
+      --champagne: #f2d07a;
+      --champagne-deep: #c79a38;
+      --ivory: #fffaf1;
+      --white: #ffffff;
+      --text: #5b2218;
+      --muted: #9b6b55;
+      --line: rgba(242, 208, 122, 0.48);
+      --shadow: 0 24px 70px rgba(118, 12, 12, 0.28);
+      --gold-shadow: 0 14px 34px rgba(199, 154, 56, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Noto Serif SC", "Songti SC", "Microsoft YaHei", serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 8%, rgba(255,238,190,0.16) 0 8%, transparent 9%),
+        radial-gradient(circle at 85% 7%, rgba(255,238,190,0.12) 0 8%, transparent 9%),
+        radial-gradient(circle at 20% 20%, rgba(220, 42, 35, 0.24) 0 18%, transparent 19%),
+        radial-gradient(circle at 80% 18%, rgba(255, 198, 87, 0.16) 0 18%, transparent 19%),
+        linear-gradient(180deg, #6f0708 0%, #9d1111 26%, #b71919 52%, #8f0d0d 78%, #5b0607 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .hearts {
+      pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .hearts span {
+      position: absolute;
+      top: -12vh;
+      color: rgba(255, 220, 135, 0.62);
+      font-size: 11px;
+      text-shadow:
+        0 0 10px rgba(255,235,178,0.55),
+        0 0 18px rgba(199,154,56,0.35);
+      animation: heartFall linear infinite;
+      user-select: none;
+      filter: blur(0.1px);
+    }
+
+        .hearts span:nth-child(odd) { color: rgba(255, 232, 166, 0.68); }
+        .hearts span:nth-child(3n) { color: rgba(255, 205, 95, 0.56); }
+        .hearts span:nth-child(4n) { color: rgba(255, 245, 210, 0.58); }
+
+    .hearts span:nth-child(1)  { left: 3%;  font-size: 12px; animation-duration: 20s; animation-delay: 0s; }
+    .hearts span:nth-child(2)  { left: 10%; font-size: 9px;  animation-duration: 25s; animation-delay: 2s; }
+    .hearts span:nth-child(3)  { left: 18%; font-size: 13px; animation-duration: 22s; animation-delay: 6s; }
+    .hearts span:nth-child(4)  { left: 26%; font-size: 10px; animation-duration: 28s; animation-delay: 3s; }
+    .hearts span:nth-child(5)  { left: 34%; font-size: 14px; animation-duration: 21s; animation-delay: 8s; }
+    .hearts span:nth-child(6)  { left: 42%; font-size: 10px; animation-duration: 26s; animation-delay: 5s; }
+    .hearts span:nth-child(7)  { left: 50%; font-size: 12px; animation-duration: 23s; animation-delay: 1s; }
+    .hearts span:nth-child(8)  { left: 58%; font-size: 9px;  animation-duration: 30s; animation-delay: 9s; }
+    .hearts span:nth-child(9)  { left: 66%; font-size: 13px; animation-duration: 22s; animation-delay: 4s; }
+    .hearts span:nth-child(10) { left: 74%; font-size: 10px; animation-duration: 27s; animation-delay: 2.5s; }
+    .hearts span:nth-child(11) { left: 82%; font-size: 12px; animation-duration: 21s; animation-delay: 7s; }
+    .hearts span:nth-child(12) { left: 90%; font-size: 9px;  animation-duration: 29s; animation-delay: 5.5s; }
+
+    @keyframes heartFall {
+      0%   { transform: translate3d(0, -8vh, 0) rotate(0deg) scale(0.72); opacity: 0; }
+      16%  { opacity: 0.58; }
+      50%  { transform: translate3d(18px, 52vh, 0) rotate(120deg) scale(0.9); opacity: 0.68; }
+      100% { transform: translate3d(-16px, 110vh, 0) rotate(260deg) scale(0.78); opacity: 0; }
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background:
+        linear-gradient(90deg, rgba(255,236,180,0.10), rgba(255,255,255,0.03), rgba(255,236,180,0.10)),
+        linear-gradient(180deg, rgba(120,8,8,0.46), rgba(170,20,20,0.36));
+      box-shadow: 0 0 100px rgba(45, 4, 4, 0.34);
+      border-left: 1px solid rgba(242,208,122,0.25);
+      border-right: 1px solid rgba(242,208,122,0.25);
+    }
+
+    section {
+      padding: 34px 20px;
+      position: relative;
+    }
+
+    .cover {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(255,228,160,0.16) 0 10%, transparent 11%),
+        radial-gradient(circle at 76% 20%, rgba(255,245,210,0.10) 0 10%, transparent 11%),
+        linear-gradient(180deg, rgba(111,7,8,0.18), rgba(70,4,5,0.16));
+    }
+
+    .cover::before,
+    .cover::after {
+      content: "";
+      position: absolute;
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: rgba(255,224,150,0.10);
+      filter: blur(5px);
+    }
+
+    .cover::before { left: -96px; top: 82px; }
+    .cover::after { right: -120px; bottom: 82px; }
+
+    .cover-card {
+      position: relative;
+      width: 100%;
+      padding: 42px 22px 34px;
+      border: 1px solid rgba(242, 208, 122, 0.58);
+      border-radius: 38px;
+      background:
+        linear-gradient(180deg, rgba(255,250,241,0.97), rgba(255,244,232,0.92)),
+        radial-gradient(circle at 10% 12%, rgba(183,25,25,0.08), transparent 28%),
+        radial-gradient(circle at 90% 12%, rgba(242,208,122,0.18), transparent 32%);
+      box-shadow: var(--shadow), var(--gold-shadow);
+      backdrop-filter: blur(14px);
+      animation: floatIn .9s ease-out both;
+    }
+
+    @keyframes floatIn {
+      from { transform: translateY(24px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .double-happiness {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 16px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      color: #fff4d2;
+      font-size: 38px;
+      font-weight: 700;
+      background: linear-gradient(145deg, #b71919, #7a0708);
+      border: 3px solid var(--champagne);
+      box-shadow:
+        0 0 0 6px rgba(255,245,210,0.36),
+        0 12px 32px rgba(118, 12, 12, 0.30),
+        0 10px 24px rgba(199, 154, 56, 0.18);
+      text-shadow: 0 2px 5px rgba(40,0,0,0.28);
+    }
+
+
+    .cover-photo-frame {
+      width: 190px;
+      height: 238px;
+      margin: 6px auto 22px;
+      padding: 8px;
+      border-radius: 999px 999px 26px 26px;
+      background: linear-gradient(145deg, rgba(255,250,241,0.95), rgba(255,238,204,0.88));
+      border: 1px solid rgba(242,208,122,0.72);
+      box-shadow:
+        0 18px 38px rgba(118,12,12,0.20),
+        0 8px 22px rgba(199,154,56,0.16),
+        inset 0 0 0 5px rgba(255,245,210,0.42);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-photo-frame::before,
+    .cover-photo-frame::after {
+      content: "❤";
+      position: absolute;
+      top: 24px;
+      color: rgba(199, 154, 56, 0.82);
+      font-size: 13px;
+      z-index: 2;
+    }
+
+    .cover-photo-frame::before { left: 22px; }
+    .cover-photo-frame::after { right: 22px; }
+
+    .photo-placeholder-main {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px 999px 22px 22px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background:
+        radial-gradient(circle at 50% 32%, rgba(255,250,241,0.9) 0 18%, transparent 19%),
+        linear-gradient(145deg, rgba(183,25,25,0.12), rgba(242,208,122,0.18), rgba(255,250,241,0.56));
+      color: var(--navy);
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .photo-placeholder-main small {
+      font-family: "Microsoft YaHei", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .02em;
+      font-weight: 400;
+    }
+
+    .names {
+      font-size: clamp(34px, 8vw, 48px);
+      line-height: 1.2;
+      color: var(--navy);
+      margin: 12px 0;
+      letter-spacing: .04em;
+      text-shadow: 0 2px 0 rgba(255,255,255,0.84);
+    }
+
+    .subtitle {
+      font-size: 17px;
+      color: var(--blue-900);
+      letter-spacing: .18em;
+      margin: 0 0 18px;
+    }
+
+
+    .date-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 210px;
+      padding: 12px 18px;
+      margin: 12px auto 26px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.84);
+      border: 1px solid rgba(232, 201, 122, 0.56);
+      color: var(--navy);
+      box-shadow: inset 0 0 18px rgba(183,25,25,0.10), 0 8px 20px rgba(159,138,224,0.06);
+    }
+
+    .wedding-date-card {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      min-width: 230px;
+      padding: 12px 22px;
+      margin: 12px auto 26px;
+      border-radius: 999px;
+      color: var(--navy);
+      background:
+        linear-gradient(135deg, rgba(255,250,241,0.96), rgba(255,239,208,0.88)),
+        linear-gradient(135deg, rgba(183,25,25,0.08), rgba(242,208,122,0.16));
+      border: 1px solid rgba(242, 208, 122, 0.76);
+      box-shadow:
+        inset 0 0 18px rgba(255,250,241,0.72),
+        0 10px 26px rgba(118,12,12,0.14),
+        0 5px 16px rgba(199,154,56,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wedding-date-card::before,
+    .wedding-date-card::after {
+      content: "♡";
+      color: rgba(232, 201, 122, 0.78);
+      font-size: 13px;
+      line-height: 1;
+    }
+
+    .date-year {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--champagne-deep);
+    }
+
+    .date-divider {
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(180deg, transparent, rgba(232,201,122,0.85), transparent);
+    }
+
+    .date-main {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0.10em;
+      color: var(--navy);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.85);
+    }
+
+
+    .open-btn,
+    .button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      padding: 14px 28px;
+      color: #fff4d2;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      background: linear-gradient(135deg, #b71919, #7a0708);
+      box-shadow:
+        0 14px 28px rgba(118,12,12,0.25),
+        inset 0 1px 0 rgba(255,236,180,0.42);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+    }
+
+    .open-btn::after,
+    .button::after {
+      content: "";
+      position: absolute;
+      inset: 3px;
+      border-radius: inherit;
+      border: 1px solid rgba(242, 208, 122, 0.70);
+      pointer-events: none;
+    }
+
+    .tap-hint {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tap-text {
+      font-size: 14px;
+      color: var(--purple-900);
+      letter-spacing: 0.08em;
+    }
+
+    .tap-hand {
+      font-size: 31px;
+      display: inline-block;
+      animation: tapFinger 1s infinite;
+      transform-origin: center;
+      filter: drop-shadow(0 8px 12px rgba(196,176,246,0.26));
+    }
+
+    @keyframes tapFinger {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      30% { transform: translateY(7px) scale(0.92); opacity: .92; }
+      60% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .hint {
+      color: var(--muted);
+      margin-top: 18px;
+      font-size: 13px;
+    }
+
+    .hidden-content {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .hidden-content.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card {
+      border-radius: 28px;
+      padding: 24px 18px;
+      margin: 18px 0;
+      background:
+        linear-gradient(180deg, rgba(255,250,241,0.97), rgba(255,241,224,0.92)),
+        radial-gradient(circle at 10% 12%, rgba(183,25,25,0.08), transparent 28%),
+        radial-gradient(circle at 92% 8%, rgba(242,208,122,0.14), transparent 28%);
+      border: 1px solid rgba(242, 208, 122, 0.44);
+      box-shadow: var(--shadow), 0 10px 24px rgba(199,154,56,0.10);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 0 18px;
+      color: var(--navy);
+      font-size: 25px;
+      letter-spacing: .16em;
+      text-align: center;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      width: 46px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--champagne));
+    }
+
+    .section-title::after {
+      background: linear-gradient(90deg, var(--champagne), transparent);
+    }
+
+    p {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .signature {
+      margin-top: 16px;
+      text-align: right;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .couple-grid,
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .person,
+    .info-item,
+    .timeline-item,
+    .input-line {
+      padding: 14px 15px;
+      border-radius: 18px;
+      background: rgba(255,250,241,0.80);
+      border: 1px solid rgba(242, 208, 122, 0.30);
+      box-shadow: inset 0 0 16px rgba(183,25,25,0.04);
+    }
+
+    .person h3,
+    .info-item strong {
+      margin: 0 0 8px;
+      color: var(--navy);
+      font-size: 20px;
+    }
+
+    .timeline { position: relative; padding-left: 8px; }
+
+    .timeline-item {
+      margin: 10px 0;
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .time {
+      color: var(--champagne-deep);
+      font-weight: 700;
+    }
+
+    .map-box { text-align: center; }
+
+    .pin {
+      font-size: 58px;
+      margin: 8px 0 12px;
+      filter: drop-shadow(0 10px 18px rgba(196,176,246,0.24));
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .photo {
+      aspect-ratio: 1 / 1.15;
+      border-radius: 20px;
+      border: 5px solid rgba(255,250,241,0.90);
+      outline: 1px solid rgba(242,208,122,0.44);
+      background:
+        linear-gradient(135deg, rgba(183,25,25,0.12), rgba(242,208,122,0.18), rgba(255,250,241,0.58)),
+        radial-gradient(circle at 50% 35%, rgba(255,250,241,0.84) 0 22%, transparent 23%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 10px;
+      color: var(--navy);
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(118,12,12,0.12), 0 8px 18px rgba(199,154,56,0.10);
+    }
+
+    .rsvp { display: grid; gap: 12px; }
+
+    .input-line {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      color: var(--text);
+    }
+
+    .checkboxes { gap: 14px; flex-wrap: wrap; }
+
+    .checkboxes span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-right: 12px;
+    }
+
+    .fake-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1.8px solid var(--champagne-deep);
+      background: rgba(255,255,255,0.88);
+      display: inline-block;
+    }
+
+
+    .blessing-form {
+      gap: 15px;
+    }
+
+    .form-field {
+      display: grid;
+      gap: 8px;
+      text-align: left;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      border: 1px solid rgba(242, 208, 122, 0.38);
+      border-radius: 18px;
+      padding: 14px 15px;
+      color: var(--text);
+      font: inherit;
+      line-height: 1.6;
+      background: rgba(255,250,241,0.86);
+      outline: none;
+      box-shadow:
+        inset 0 0 16px rgba(183,25,25,0.05),
+        0 8px 18px rgba(118,12,12,0.08);
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: rgba(180, 166, 236, 0.78);
+      box-shadow:
+        0 0 0 4px rgba(242,208,122,0.13),
+        inset 0 0 16px rgba(183,25,25,0.10);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 118px;
+    }
+
+    .gift-card {
+      overflow: hidden;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 13px;
+      margin-top: 18px;
+    }
+
+    .gift-item {
+      padding: 18px 14px;
+      border-radius: 20px;
+      text-align: center;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,247,255,0.76)),
+        radial-gradient(circle at 50% 0%, rgba(183,25,25,0.10), transparent 45%);
+      border: 1px solid rgba(232, 201, 122, 0.34);
+      box-shadow:
+        0 10px 22px rgba(118,12,12,0.12),
+        inset 0 0 18px rgba(255,255,255,0.45);
+    }
+
+    .gift-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 10px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      color: var(--navy);
+      font-size: 21px;
+      background: linear-gradient(145deg, rgba(183,25,25,0.10), rgba(242,208,122,0.13));
+      border: 1px solid rgba(232, 201, 122, 0.42);
+    }
+
+    .gift-label {
+      font-size: 14px;
+      color: var(--champagne-deep);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 7px;
+    }
+
+    .gift-value {
+      color: var(--navy);
+      font-weight: 700;
+      word-break: break-word;
+      line-height: 1.65;
+    }
+
+    .usdt-address {
+      font-family: "Menlo", "Monaco", "Consolas", monospace;
+      font-size: 13px;
+      letter-spacing: 0.01em;
+    }
+
+    @media (min-width: 480px) {
+      .gift-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .gift-item {
+        min-height: 150px;
+      }
+    }
+
+
+    .gift-card {
+      overflow: hidden;
+    }
+
+    .bank-info-panel {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,250,241,0.94), rgba(255,241,224,0.86)),
+        radial-gradient(circle at 12% 0%, rgba(183,25,25,0.10), transparent 42%);
+      border: 1px solid rgba(242, 208, 122, 0.44);
+      box-shadow:
+        0 12px 26px rgba(118,12,12,0.12),
+        inset 0 0 20px rgba(255,250,241,0.52);
+    }
+
+    .bank-panel-title {
+      text-align: center;
+      color: var(--navy);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      margin-bottom: 14px;
+    }
+
+    .bank-account {
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255,250,241,0.78);
+      border: 1px solid rgba(242, 208, 122, 0.34);
+      margin-bottom: 14px;
+    }
+
+    .bank-account:last-child {
+      margin-bottom: 0;
+    }
+
+    .bank-account-title {
+      color: var(--champagne-deep);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .bank-row {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 0;
+      border-top: 1px dashed rgba(232, 201, 122, 0.34);
+    }
+
+    .bank-row:first-of-type {
+      border-top: 0;
+    }
+
+    .bank-label {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .bank-value {
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 1.55;
+      word-break: break-word;
+      text-align: right;
+    }
+
+    .bank-number {
+      font-family: "Menlo", "Monaco", "Consolas", monospace;
+      letter-spacing: 0.02em;
+    }
+
+    .payment-qr {
+      width: min(176px, 100%);
+      min-height: 176px;
+      margin: 16px auto 2px;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px dashed rgba(210, 160, 45, 0.72);
+      border-radius: 14px;
+      background: rgba(255, 253, 247, 0.78);
+    }
+
+    .payment-qr img {
+      display: block;
+      width: 154px;
+      height: 154px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .payment-qr-placeholder {
+      color: var(--champagne-deep);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .payment-qr-placeholder small {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .usdt-panel {
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      text-align: center;
+      background:
+        linear-gradient(135deg, rgba(183,25,25,0.10), rgba(242,208,122,0.14), rgba(255,250,241,0.80));
+      border: 1px solid rgba(242, 208, 122, 0.42);
+      box-shadow:
+        0 10px 22px rgba(118,12,12,0.12),
+        inset 0 0 18px rgba(255,250,241,0.50);
+    }
+
+    .usdt-title {
+      color: var(--champagne-deep);
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      margin-bottom: 8px;
+    }
+
+    .usdt-address {
+      color: var(--navy);
+      font-family: "Menlo", "Monaco", "Consolas", monospace;
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.7;
+      word-break: break-all;
+    }
+
+
+
+    .blessing-wall {
+      margin-top: 22px;
+      padding: 18px 14px;
+      border-radius: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,250,241,0.90), rgba(255,241,224,0.82)),
+        radial-gradient(circle at 50% 0%, rgba(242,208,122,0.16), transparent 48%);
+      border: 1px solid rgba(242, 208, 122, 0.42);
+      box-shadow:
+        0 12px 26px rgba(118,12,12,0.10),
+        inset 0 0 18px rgba(255,250,241,0.48);
+    }
+
+    .blessing-wall-title {
+      margin: 0;
+      text-align: center;
+      color: var(--navy);
+      font-size: 21px;
+      letter-spacing: 0.16em;
+    }
+
+    .blessing-wall-subtitle {
+      margin: 8px 0 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .blessing-list {
+      display: grid;
+      gap: 11px;
+    }
+
+    .blessing-item {
+      padding: 13px 14px;
+      border-radius: 18px;
+      background: rgba(255,250,241,0.82);
+      border: 1px solid rgba(242, 208, 122, 0.30);
+      box-shadow: inset 0 0 14px rgba(242,208,122,0.08);
+      animation: blessingFadeIn .35s ease both;
+    }
+
+    @keyframes blessingFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .blessing-name {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .blessing-name::before {
+      content: "❤";
+      color: var(--champagne-deep);
+      margin-right: 5px;
+      font-size: 12px;
+    }
+
+    .blessing-time {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    .blessing-text {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.8;
+      word-break: break-word;
+      white-space: pre-wrap;
+    }
+
+    .empty-blessing {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 16px 8px;
+      border-radius: 18px;
+      background: rgba(255,250,241,0.58);
+      border: 1px dashed rgba(242, 208, 122, 0.38);
+    }
+
+    .more-blessing-btn {
+      display: block;
+      margin: 14px auto 0;
+      padding: 10px 18px;
+      border: 1px solid rgba(242, 208, 122, 0.62);
+      border-radius: 999px;
+      color: #fff4d2;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #b71919, #7a0708);
+      box-shadow: 0 10px 20px rgba(118,12,12,0.18);
+      cursor: pointer;
+    }
+
+    .hongbao-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+      margin-bottom: 8px;
+    }
+
+    .hongbao-trigger {
+      position: relative;
+      width: 250px;
+      height: 320px;
+      border: none;
+      cursor: pointer;
+      border-radius: 18px 18px 26px 26px;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255,221,145,0.18), transparent 28%),
+        linear-gradient(180deg, #be1212 0%, #a70e0e 48%, #8f0909 100%);
+      box-shadow:
+        0 22px 48px rgba(91, 6, 7, 0.36),
+        inset 0 0 0 2px rgba(242,208,122,0.62),
+        inset 0 -8px 18px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .hongbao-trigger:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow:
+        0 28px 56px rgba(91, 6, 7, 0.42),
+        inset 0 0 0 2px rgba(242,208,122,0.72),
+        inset 0 -8px 18px rgba(0,0,0,0.12);
+    }
+
+    .hongbao-top-fold {
+      position: absolute;
+      top: -2px;
+      left: 0;
+      width: 100%;
+      height: 105px;
+      background: linear-gradient(180deg, #cf1f1f 0%, #b71111 100%);
+      clip-path: polygon(0 0, 100% 0, 50% 82%);
+      border-top-left-radius: 18px;
+      border-top-right-radius: 18px;
+      box-shadow: inset 0 -2px 0 rgba(242,208,122,0.55);
+    }
+
+    .hongbao-top-fold::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #ffe6a4, #d4a53a 70%, #b37d1b 100%);
+      box-shadow: 0 10px 18px rgba(84,26,2,0.25);
+      border: 2px solid rgba(255,239,188,0.55);
+    }
+
+    .hongbao-glow {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent 0%, rgba(255,230,162,0.12) 35%, transparent 70%);
+      animation: hongbaoShine 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes hongbaoShine {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(120%); }
+    }
+
+    .hongbao-title {
+      position: relative;
+      margin-top: 34px;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffe8b0;
+      letter-spacing: 0.18em;
+      text-shadow: 0 2px 8px rgba(65,0,0,0.28);
+      z-index: 1;
+    }
+
+    .yuanbao-icon {
+      position: relative;
+      width: 120px;
+      height: 96px;
+      margin: 26px auto 18px;
+      display: block;
+      z-index: 1;
+      filter: drop-shadow(0 14px 18px rgba(80, 39, 0, 0.22));
+    }
+
+    .yuanbao-top {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 64px;
+      height: 28px;
+      transform: translateX(-50%);
+      border-radius: 40px;
+      background: linear-gradient(180deg, #fff0bd 0%, #f6d26e 55%, #d39a23 100%);
+      border: 2px solid rgba(192,128,16,0.35);
+      z-index: 2;
+    }
+
+    .yuanbao-body {
+      position: absolute;
+      left: 50%;
+      bottom: 8px;
+      width: 112px;
+      height: 58px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, #fff0ba 0%, #f1c85a 55%, #cb8f19 100%);
+      border-radius: 22px 22px 34px 34px;
+      border: 2px solid rgba(192,128,16,0.40);
+      clip-path: polygon(12% 18%, 88% 18%, 100% 54%, 88% 100%, 12% 100%, 0 54%);
+    }
+
+    .yuanbao-dot {
+      position: absolute;
+      left: 50%;
+      top: 39px;
+      width: 22px;
+      height: 22px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #fff4cf, #e4b33f 70%, #b67916 100%);
+      border: 1px solid rgba(192,128,16,0.42);
+      z-index: 3;
+    }
+
+    .hongbao-open-text {
+      position: relative;
+      z-index: 1;
+      color: #ffe8b0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    .hongbao-open-text::before {
+      content: "轻触查看收款信息";
+      display: block;
+      margin-bottom: 12px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      color: rgba(255,236,180,0.82);
+      font-weight: 500;
+    }
+
+    .gift-hidden-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform: translateY(16px);
+      transition: max-height .7s ease, opacity .5s ease, transform .5s ease, margin-top .4s ease;
+      margin-top: 0;
+    }
+
+    .gift-hidden-content.show {
+      max-height: 1200px;
+      opacity: 1;
+      transform: translateY(0);
+      margin-top: 18px;
+    }
+
+    .footer { text-align: center; padding-bottom: 54px; }
+
+    .footer .names-small {
+      margin: 18px 0 8px;
+      color: var(--navy);
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .cloud-line {
+      height: 44px;
+      margin: 8px auto 0;
+      max-width: 360px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.5), rgba(183,25,25,0.10), rgba(196,176,246,0.2), rgba(255,255,255,0.5));
+      filter: blur(.2px);
+    }
+
+
+    .language-switcher {
+      position: fixed;
+      left: 18px;
+      top: 18px;
+      z-index: 22;
+      display: flex;
+      gap: 6px;
+      padding: 6px;
+      border-radius: 999px;
+      background: rgba(255,250,241,0.92);
+      border: 1px solid rgba(242,208,122,0.62);
+      box-shadow: 0 10px 24px rgba(118,12,12,0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .language-btn {
+      min-width: 42px;
+      height: 30px;
+      padding: 0 10px;
+      border: 0;
+      border-radius: 999px;
+      color: var(--navy);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+
+    .language-btn.active {
+      color: #fff4d2;
+      background: linear-gradient(135deg, #b71919, #7a0708);
+      box-shadow: inset 0 0 0 1px rgba(242,208,122,0.62);
+    }
+
+    body.lang-en,
+    body.lang-id {
+      font-family: "Georgia", "Times New Roman", "Microsoft YaHei", serif;
+    }
+
+    body.lang-en .section-title,
+    body.lang-id .section-title,
+    body.lang-en .bank-panel-title,
+    body.lang-id .bank-panel-title,
+    body.lang-en .blessing-wall-title,
+    body.lang-id .blessing-wall-title {
+      letter-spacing: 0.06em;
+    }
+
+    body.lang-en .names,
+    body.lang-id .names,
+    body.lang-en .names-small,
+    body.lang-id .names-small {
+      font-family: "Noto Serif SC", "Songti SC", "Microsoft YaHei", serif;
+    }
+
+    .music-btn {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      z-index: 20;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(242,208,122,0.62);
+      background: rgba(255,250,241,0.90);
+      color: var(--navy);
+      box-shadow: 0 10px 24px rgba(118,12,12,0.16);
+      display: grid;
+      place-items: center;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .nav-dots {
+      position: fixed;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: none;
+      gap: 8px;
+      flex-direction: column;
+    }
+
+    .nav-dots a {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(183,25,25,0.10), rgba(196,176,246,0.95));
+      display: block;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.45);
+    }
+
+    @media (min-width: 720px) {
+      .nav-dots { display: flex; }
+    }
+  
+    /* ===== Photo version add-on ===== */
+    .cover-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 999px 999px 22px 22px;
+      display: block;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .gallery .photo {
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      display: block;
+      aspect-ratio: 1 / 1.15;
+      border-radius: 20px;
+      border: 5px solid rgba(255, 250, 241, 0.9);
+      outline: 1px solid rgba(242, 208, 122, 0.45);
+      background: rgba(255, 250, 241, 0.75);
+      box-shadow: 0 10px 24px rgba(118, 12, 12, 0.16), 0 8px 18px rgba(199, 154, 56, 0.12);
+    }
+
+    .gallery .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery .photo span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px 6px;
+      color: #fff4d2;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: 0.08em;
+      background: linear-gradient(180deg, transparent, rgba(80, 5, 5, 0.82));
+    }
+
+  
+    .song-name-badge {
+      position: fixed;
+      right: 18px;
+      top: 70px;
+      z-index: 20;
+      max-width: 178px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #fff4d2;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(183, 25, 25, 0.92), rgba(122, 7, 8, 0.92));
+      border: 1px solid rgba(242, 208, 122, 0.62);
+      box-shadow: 0 10px 22px rgba(118, 12, 12, 0.18);
+      backdrop-filter: blur(8px);
+    }
+
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-btn" id="musicBtn" aria-label="播放音乐" title="幸福恋人 - 郑源 & 沈丹丹">♪</button>
+  <div class="song-name-badge" id="songNameBadge">幸福恋人 · 郑源 & 沈丹丹</div>
+
+  <div class="language-switcher" aria-label="Language switcher">
+    <button class="language-btn active" type="button" data-lang="zh">中文</button>
+    <button class="language-btn" type="button" data-lang="id">ID</button>
+    <button class="language-btn" type="button" data-lang="en">EN</button>
+  </div>
+
+  <div class="hearts" aria-hidden="true">
+    <span>❤</span><span>♡</span><span>❤</span><span>♡</span><span>❤</span><span>♡</span>
+    <span>❤</span><span>♡</span><span>❤</span><span>♡</span><span>❤</span><span>♡</span>
+  </div>
+
+  <nav class="nav-dots" aria-label="快速导航">
+    <a href="#cover"></a>
+    <a href="#invite"></a>
+    <a href="#info"></a>
+    <a href="#rsvp"></a>
+  </nav>
+
+  <main class="page">
+    <section class="cover" id="cover">
+      <div class="cover-card">
+        <div class="double-happiness">囍</div>
+        <div class="cover-photo-frame">
+          <img src="images/cover.jpg" alt="新人照片" class="cover-photo">
+        </div>
+        <h1 class="names">李翊旗 &<br />傅水娥</h1>
+        <p class="subtitle">诚邀您参加我们的婚礼</p>
+        <div class="wedding-date-card">
+          <span class="date-year">2026</span>
+          <span class="date-divider"></span>
+          <span class="date-main">12月24日</span>
+        </div>
+        <br />
+        <button class="open-btn" id="openInvitation">开启我们的幸福时刻</button>
+        <div class="tap-hint">
+          <span class="tap-text">轻触开启</span>
+          <span class="tap-hand">👆</span>
+        </div>
+        <p class="hint">请点击开启请帖</p>
+      </div>
+    </section>
+
+    <div id="invitationContent" class="hidden-content">
+      <section id="invite">
+        <div class="card">
+          <h2 class="section-title">邀请语</h2>
+          <p>亲爱的 <strong>亲戚，朋友，兄弟和姐妹</strong>：</p>
+          <p>我们即将步入人生新的阶段，很荣幸邀请您见证我们的幸福时刻。</p>
+          <p>愿您能在这个特别的日子里，与我们一同分享喜悦、祝福与美好回忆。</p>
+          <p>期待您的到来。</p>
+          <p class="signature">李翊旗 & 傅水娥 敬邀</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="card">
+          <h2 class="section-title">新人介绍</h2>
+          <div class="couple-grid">
+            <div class="person">
+              <h3>新郎：李翊旗</h3>
+              <p>温柔、稳重、负责的人</p>
+            </div>
+            <div class="person">
+              <h3>新娘：傅水娥</h3>
+              <p>善良、可爱、温暖的人</p>
+            </div>
+          </div>
+          <p>从相遇、相识到相爱，感谢命运让我们走到一起。未来的日子，我们将携手同行，共同开启新的生活。</p>
+        </div>
+      </section>
+
+      <section id="info">
+        <div class="card">
+          <h2 class="section-title">婚礼信息</h2>
+          <div class="info-grid">
+            <div class="info-item"><strong>婚礼日期</strong><br />2026年12月24日</div>
+            <div class="info-item"><strong>婚礼时间</strong><br />[上午/下午/晚上 时间]</div>
+            <div class="info-item"><strong>婚礼地点</strong><br />[酒店/宴会厅/地址]</div>
+            <div class="info-item"><strong>宴会厅</strong><br />[厅名，没有可删除]</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="section-title">婚礼流程</h2>
+          <div class="timeline">
+            <div class="timeline-item"><span class="time">[时间]</span><span>宾客签到</span></div>
+            <div class="timeline-item"><span class="time">[时间]</span><span>婚礼仪式开始</span></div>
+            <div class="timeline-item"><span class="time">[时间]</span><span>合影留念</span></div>
+            <div class="timeline-item"><span class="time">[时间]</span><span>婚宴开始</span></div>
+            <div class="timeline-item"><span class="time">[时间]</span><span>敬酒 / 互动 / 表演</span></div>
+            <div class="timeline-item"><span class="time">[时间]</span><span>婚礼圆满结束</span></div>
+          </div>
+        </div>
+
+        <div class="card map-box">
+          <h2 class="section-title">地图导航</h2>
+          <div class="pin">📍</div>
+          <p>婚礼地点：<strong>[完整地址]</strong></p>
+          <a class="button" href="https://maps.google.com/?q=[完整地址]" target="_blank" rel="noopener">点击查看地图 / 前往婚礼现场</a>
+        </div>
+      </section>
+
+      <section>
+        <div class="card">
+          <h2 class="section-title">我们的回忆</h2>
+          <div class="gallery">
+            <div class="photo"><img src="images/wedding1.jpg" alt="婚纱照"><span>婚纱照</span></div>
+            <div class="photo"><img src="images/daily1.jpg" alt="日常合照"><span>日常合照</span></div>
+            <div class="photo"><img src="images/proposal1.jpg" alt="求婚照片"><span>求婚照片</span></div>
+            <div class="photo"><img src="images/travel1.jpg" alt="旅行照片"><span>旅行照片</span></div>
+            <div class="photo"><img src="images/engagement1.jpg" alt="订婚照片"><span>订婚照片</span></div>
+            <div class="photo"><img src="images/memory1.jpg" alt="更多回忆"><span>更多回忆</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="rsvp">
+        <div class="card">
+          <h2 class="section-title">祝福填写</h2>
+          <p>欢迎您留下姓名与祝福，我们会珍藏每一份心意。</p>
+
+          <form class="rsvp blessing-form" onsubmit="handleBlessingSubmit(event)">
+            <label class="form-field">
+              <span>您的姓名</span>
+              <input type="text" name="guestName" placeholder="请输入您的姓名" required />
+            </label>
+
+            <label class="form-field">
+              <span>祝福留言</span>
+              <textarea name="blessing" placeholder="写下您想对新人说的话" rows="4" required></textarea>
+            </label>
+
+            <button class="button" type="submit">送出祝福</button>
+          </form>
+
+          <div class="blessing-wall" id="blessingWall">
+            <h3 class="blessing-wall-title">宾客祝福</h3>
+            <p class="blessing-wall-subtitle">这里会展示大家送上的祝福。</p>
+            <div class="blessing-list" id="blessingList"></div>
+            <button class="more-blessing-btn" id="moreBlessingBtn" type="button" onclick="toggleBlessings()" style="display:none;">查看更多祝福</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="gift-info">
+        <div class="card gift-card">
+          <h2 class="section-title">礼金方式</h2>
+          <p style="text-align:center;">如需送上心意，可点击下方红包查看收款信息。</p>
+
+          <div class="hongbao-area">
+            <button class="hongbao-trigger" id="hongbaoTrigger" type="button" onclick="toggleGiftInfo()" aria-expanded="false" aria-controls="giftHiddenContent">
+              <span class="hongbao-top-fold"></span>
+              <span class="hongbao-glow"></span>
+              <span class="hongbao-title">恭喜发财</span>
+              <span class="yuanbao-icon" aria-hidden="true">
+                <span class="yuanbao-top"></span>
+                <span class="yuanbao-body"></span>
+                <span class="yuanbao-dot"></span>
+              </span>
+              <span class="hongbao-open-text">点击打开红包</span>
+            </button>
+          </div>
+
+          <div class="gift-hidden-content" id="giftHiddenContent">
+            <div class="bank-info-panel">
+              <div class="bank-panel-title">银行卡信息</div>
+
+              <div class="bank-account">
+                <div class="bank-account-title">银行卡 1</div>
+                <div class="bank-row">
+                  <span class="bank-label">银行名称</span>
+                  <span class="bank-value payment-fixed">[填写银行名称]</span>
+                </div>
+                <div class="bank-row">
+                  <span class="bank-label">持卡人</span>
+                  <span class="bank-value payment-fixed">[填写持卡人姓名]</span>
+                </div>
+                <div class="bank-row">
+                  <span class="bank-label">卡号</span>
+                  <span class="bank-value bank-number payment-fixed">[填写银行卡号]</span>
+                </div>
+                <div class="payment-qr">
+                  <img src="images/bank1-qr.png" alt="银行卡 1 收款二维码" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                  <div class="payment-qr-placeholder">收款二维码<small>上传 bank1-qr.png</small></div>
+                </div>
+              </div>
+
+              <div class="bank-account">
+                <div class="bank-account-title">银行卡 2</div>
+                <div class="bank-row">
+                  <span class="bank-label">银行名称</span>
+                  <span class="bank-value payment-fixed">[填写银行名称]</span>
+                </div>
+                <div class="bank-row">
+                  <span class="bank-label">持卡人</span>
+                  <span class="bank-value payment-fixed">[填写持卡人姓名]</span>
+                </div>
+                <div class="bank-row">
+                  <span class="bank-label">卡号</span>
+                  <span class="bank-value bank-number payment-fixed">[填写银行卡号]</span>
+                </div>
+                <div class="payment-qr">
+                  <img src="images/bank2-qr.png" alt="银行卡 2 收款二维码" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                  <div class="payment-qr-placeholder">收款二维码<small>上传 bank2-qr.png</small></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="usdt-panel">
+              <div class="usdt-title">USDT 地址</div>
+              <div class="usdt-address payment-fixed">[填写U地址]</div>
+              <div class="payment-qr">
+                <img src="images/usdt-qr.png" alt="USDT 收款二维码" onload="this.nextElementSibling.style.display='none'" onerror="this.style.display='none'">
+                <div class="payment-qr-placeholder">收款二维码<small>上传 usdt-qr.png</small></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="card">
+          <h2 class="section-title">祝福语</h2>
+          <p style="text-align:center;">感谢您送上的祝福，您的到来将让我们的婚礼更加圆满。</p>
+        </div>
+      </section>
+
+      <section class="footer">
+        <div class="card">
+          <p>感谢您的见证与祝福。</p>
+          <div class="names-small">李翊旗 & 傅水娥</div>
+          <p>愿我们在爱与祝福中，携手走向新的未来。</p>
+          <p><strong>期待与您相见</strong></p>
+          <div class="cloud-line"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    let playing = false;
+    let currentLang = localStorage.getItem('wedding_lang_li_fu') || 'zh';
+
+    if (musicBtn) {
+      musicBtn.addEventListener('click', async () => {
+        try {
+          if (!playing) {
+            await bgMusic.play();
+            musicBtn.textContent = '♫';
+            playing = true;
+          } else {
+            bgMusic.pause();
+            musicBtn.textContent = '♪';
+            playing = false;
+          }
+        } catch (err) {
+          alert(t('alertMusicMissing'));
+        }
+      });
+    }
+
+
+    function handleBlessingSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.guestName.value.trim();
+      const blessing = form.blessing.value.trim();
+
+      if (!name || !blessing) {
+        alert(t('alertFillBlessing'));
+        return;
+      }
+
+      alert('感谢您的祝福！');
+      form.reset();
+    }
+
+
+    const BLESSING_STORAGE_KEY = 'wedding_blessings_li_fu';
+    let blessingExpanded = false;
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll("'", '&#039;');
+    }
+
+    function getBlessings() {
+      try {
+        return JSON.parse(localStorage.getItem(BLESSING_STORAGE_KEY) || '[]');
+      } catch (err) {
+        return [];
+      }
+    }
+
+    function saveBlessings(blessings) {
+      localStorage.setItem(BLESSING_STORAGE_KEY, JSON.stringify(blessings));
+    }
+
+    function formatBlessingTime(isoString) {
+      const date = new Date(isoString);
+      if (Number.isNaN(date.getTime())) return '';
+      return date.toLocaleDateString('zh-CN', { month: '2-digit', day: '2-digit' }) + ' ' +
+        date.toLocaleTimeString('zh-CN', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function renderBlessings() {
+      const list = document.getElementById('blessingList');
+      const moreBtn = document.getElementById('moreBlessingBtn');
+      if (!list || !moreBtn) return;
+
+      const blessings = getBlessings();
+      const visibleBlessings = blessingExpanded ? blessings : blessings.slice(0, 5);
+
+      if (blessings.length === 0) {
+        list.innerHTML = `<div class="empty-blessing">${t('emptyBlessing')}</div>`;
+        moreBtn.style.display = 'none';
+        return;
+      }
+
+      list.innerHTML = visibleBlessings.map(item => `
+        <div class="blessing-item">
+          <div class="blessing-name">
+            <span>${escapeHtml(item.name)}</span>
+            <span class="blessing-time">${escapeHtml(formatBlessingTime(item.createdAt))}</span>
+          </div>
+          <div class="blessing-text">${escapeHtml(item.message)}</div>
+        </div>
+      `).join('');
+
+      if (blessings.length > 5) {
+        moreBtn.style.display = 'block';
+        moreBtn.textContent = blessingExpanded ? t('collapseBlessing') : t('moreBlessing', { count: blessings.length });
+      } else {
+        moreBtn.style.display = 'none';
+      }
+    }
+
+    function toggleBlessings() {
+      blessingExpanded = !blessingExpanded;
+      applyCmsSettings();
+      renderBlessings();
+    }
+
+    let cmsSettings = null;
+
+    function setNodeText(selector, value) {
+      const node = document.querySelector(selector);
+      if (node && value) node.textContent = value;
+    }
+
+    function applyCmsSettings() {
+      const s = cmsSettings;
+      if (!s) return;
+      const pair = `${s.groom || ''} & ${s.bride || ''}`;
+      document.title = `${pair} 婚礼电子请帖`;
+      document.querySelectorAll('.names').forEach(node => node.innerHTML = `${s.groom || ''} &<br>${s.bride || ''}`);
+      document.querySelectorAll('.names-small').forEach(node => node.textContent = pair);
+      document.querySelectorAll('.signature').forEach(node => node.textContent = `${pair} 敬邀`);
+      const invitationCard = document.querySelector('.section .card');
+      if (invitationCard) {
+        const paragraphs = invitationCard.querySelectorAll('p');
+        if (paragraphs[1] && s.invitation) paragraphs[1].textContent = s.invitation;
+      }
+
+      const people = document.querySelectorAll('.person');
+      if (people[0]) { setNodeText('.person:nth-child(1) h3', `新郎：${s.groom || ''}`); setNodeText('.person:nth-child(1) p', s.groom_intro); }
+      if (people[1]) { setNodeText('.person:nth-child(2) h3', `新娘：${s.bride || ''}`); setNodeText('.person:nth-child(2) p', s.bride_intro); }
+
+      const date = currentLang === 'id' ? s.date_id : currentLang === 'en' ? s.date_en : s.date_zh;
+      const infoItems = document.querySelectorAll('.info-item');
+      if (infoItems[0]) infoItems[0].innerHTML = `<strong>${t('infoDateTitle')}</strong><br>${date || ''}`;
+      if (infoItems[1]) infoItems[1].innerHTML = `<strong>${t('infoTimeTitle')}</strong><br>${s.time || ''}`;
+      if (infoItems[2]) infoItems[2].innerHTML = `<strong>${t('infoPlaceTitle')}</strong><br>${s.venue || ''}`;
+      if (infoItems[3]) infoItems[3].innerHTML = `<strong>${t('infoHallTitle')}</strong><br>${s.hall || ''}`;
+
+      const map = document.querySelector('.map-box');
+      if (map) {
+        const mapText = map.querySelector('p strong');
+        if (mapText) mapText.textContent = s.address || '';
+        const mapLink = map.querySelector('a');
+        if (mapLink && s.map_url) mapLink.href = s.map_url;
+      }
+
+      const accounts = document.querySelectorAll('.bank-account');
+      [[s.bank_1_name, s.bank_1_holder, s.bank_1_number], [s.bank_2_name, s.bank_2_holder, s.bank_2_number]].forEach((values, index) => {
+        const account = accounts[index];
+        if (!account) return;
+        account.querySelectorAll('.payment-fixed').forEach((node, itemIndex) => node.textContent = values[itemIndex] || '');
+      });
+      setNodeText('.usdt-address', s.usdt);
+    }
+
+    function handleBlessingSubmit(event) {
+      event.preventDefault();
+      const form = event.target;
+      const name = form.guestName.value.trim();
+      const blessing = form.blessing.value.trim();
+
+      if (!name || !blessing) {
+        alert(t('alertFillBlessing'));
+        return;
+      }
+
+      const blessings = getBlessings();
+      blessings.unshift({
+        name,
+        message: blessing,
+        createdAt: new Date().toISOString()
+      });
+
+      saveBlessings(blessings);
+      form.reset();
+      blessingExpanded = false;
+      renderBlessings();
+
+      const wall = document.getElementById('blessingWall');
+      if (wall) {
+        wall.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+
+      alert(t('alertBlessingSaved'));
+    }
+
+    
+
+
+    const translations = {
+      zh: {
+        pageTitle: '李翊旗 & 傅水娥 婚礼电子请帖',
+        musicLabel: '播放音乐',
+        subtitle: '诚邀您参加我们的婚礼',
+        photoMain: '新人照片',
+        photoSmall: '可替换为 cover.jpg',
+        openButton: '开启我们的幸福时刻',
+        tapText: '轻触开启',
+        coverHint: '请点击开启请帖',
+        inviteTitle: '邀请语',
+        dearGuest: '亲爱的 <strong>亲戚，朋友，兄弟和姐妹</strong>：',
+        inviteP1: '我们即将步入人生新的阶段，很荣幸邀请您见证我们的幸福时刻。',
+        inviteP2: '愿您能在这个特别的日子里，与我们一同分享喜悦、祝福与美好回忆。',
+        inviteP3: '期待您的到来。',
+        signature: '李翊旗 & 傅水娥 敬邀',
+        coupleTitle: '新人介绍',
+        groomIntroTitle: '新郎：李翊旗',
+        groomIntroText: '温柔、稳重、负责的人',
+        brideIntroTitle: '新娘：傅水娥',
+        brideIntroText: '善良、可爱、温暖的人',
+        coupleStory: '从相遇、相识到相爱，感谢命运让我们走到一起。未来的日子，我们将携手同行，共同开启新的生活。',
+        infoTitle: '婚礼信息',
+        infoDateTitle: '婚礼日期',
+        infoDateValue: '2026年12月24日',
+        infoTimeTitle: '婚礼时间',
+        infoTimeValue: '[上午/下午/晚上 时间]',
+        infoPlaceTitle: '婚礼地点',
+        infoPlaceValue: '[酒店/宴会厅/地址]',
+        infoHallTitle: '宴会厅',
+        infoHallValue: '[厅名，没有可删除]',
+        scheduleTitle: '婚礼流程',
+        schedule1: '宾客签到',
+        schedule2: '婚礼仪式开始',
+        schedule3: '合影留念',
+        schedule4: '婚宴开始',
+        schedule5: '敬酒 / 互动 / 表演',
+        schedule6: '婚礼圆满结束',
+        mapTitle: '地图导航',
+        mapPlace: '婚礼地点：<strong>[完整地址]</strong>',
+        mapButton: '点击查看地图 / 前往婚礼现场',
+        galleryTitle: '我们的回忆',
+        photo1: '婚纱照',
+        photo2: '日常合照',
+        photo3: '求婚照片',
+        photo4: '旅行照片',
+        photo5: '订婚照片',
+        photo6: '更多回忆',
+        blessingFormTitle: '祝福填写',
+        blessingFormIntro: '欢迎您留下姓名与祝福，我们会珍藏每一份心意。',
+        guestNameLabel: '您的姓名',
+        guestNamePlaceholder: '请输入您的姓名',
+        blessingLabel: '祝福留言',
+        blessingPlaceholder: '写下您想对新人说的话',
+        blessingSubmit: '送出祝福',
+        blessingWallTitle: '宾客祝福',
+        blessingWallSubtitle: '这里会展示大家送上的祝福。',
+        emptyBlessing: '还没有祝福，快来留下第一条祝福吧。',
+        moreBlessingText: '查看更多祝福（共 {count} 条）',
+        collapseBlessing: '收起祝福',
+        giftTitle: '礼金方式',
+        giftIntro: '如需送上心意，可点击下方红包查看收款信息。',
+        hongbaoTitle: '恭喜发财',
+        hongbaoOpen: '点击打开红包',
+        hongbaoOpened: '红包已打开',
+        hongbaoHint: '轻触查看收款信息',
+        bankInfoTitle: '银行卡信息',
+        bankCard1: '银行卡 1',
+        bankCard2: '银行卡 2',
+        bankName: '银行名称',
+        bankNameValue: '[填写银行名称]',
+        cardHolder: '持卡人',
+        cardHolderValue: '[填写持卡人姓名]',
+        cardNo: '卡号',
+        cardNoValue: '[填写银行卡号]',
+        usdtTitle: 'USDT 地址',
+        usdtValue: '[填写U地址]',
+        finalBlessingTitle: '祝福语',
+        finalBlessingText: '感谢您送上的祝福，您的到来将让我们的婚礼更加圆满。',
+        footerThanks: '感谢您的见证与祝福。',
+        footerWish: '愿我们在爱与祝福中，携手走向新的未来。',
+        footerSeeYou: '期待与您相见',
+        alertFillBlessing: '请填写姓名和祝福留言。',
+        alertBlessingSaved: '感谢您的祝福！已显示在下方祝福列表。',
+        alertMusicMissing: '请先把《幸福恋人》MP3 文件放到请帖文件夹，并命名为 music.mp3。'
+      },
+      id: {
+        pageTitle: 'Undangan Pernikahan Li Yiqi & Fu Shui’e',
+        musicLabel: 'Putar musik',
+        subtitle: 'Dengan hormat mengundang Anda ke pernikahan kami',
+        photoMain: 'Foto Pasangan',
+        photoSmall: 'Bisa diganti dengan cover.jpg',
+        openButton: 'Buka Momen Bahagia Kami',
+        tapText: 'Sentuh untuk membuka',
+        coverHint: 'Silakan klik untuk membuka undangan',
+        inviteTitle: 'Undangan',
+        dearGuest: 'Kepada <strong>keluarga, teman, saudara dan saudari</strong> yang terhormat:',
+        inviteP1: 'Kami akan memasuki babak baru dalam hidup, dan dengan bahagia mengundang Anda untuk menyaksikan momen istimewa kami.',
+        inviteP2: 'Semoga Anda dapat hadir di hari spesial ini untuk berbagi kebahagiaan, doa, dan kenangan indah bersama kami.',
+        inviteP3: 'Kami menantikan kehadiran Anda.',
+        signature: '李翊旗 & 傅水娥 敬邀',
+        coupleTitle: 'Tentang Kami',
+        groomIntroTitle: 'Mempelai Pria: 李翊旗',
+        groomIntroText: 'Lembut, dewasa, dan bertanggung jawab',
+        brideIntroTitle: 'Mempelai Wanita: 傅水娥',
+        brideIntroText: 'Baik hati, manis, dan hangat',
+        coupleStory: 'Dari bertemu, saling mengenal hingga saling mencintai, kami bersyukur kepada takdir yang mempertemukan kami. Di hari-hari mendatang, kami akan berjalan bersama dan memulai kehidupan baru.',
+        infoTitle: 'Informasi Pernikahan',
+        infoDateTitle: 'Tanggal Pernikahan',
+        infoDateValue: '24 Desember 2026',
+        infoTimeTitle: 'Waktu Pernikahan',
+        infoTimeValue: '[Pagi/Siang/Malam Waktu]',
+        infoPlaceTitle: 'Lokasi Pernikahan',
+        infoPlaceValue: '[Hotel/Gedung/Alamat]',
+        infoHallTitle: 'Ruang Acara',
+        infoHallValue: '[Nama ruang, hapus jika tidak ada]',
+        scheduleTitle: 'Rangkaian Acara',
+        schedule1: 'Kedatangan tamu',
+        schedule2: 'Upacara pernikahan dimulai',
+        schedule3: 'Foto bersama',
+        schedule4: 'Resepsi dimulai',
+        schedule5: 'Toast / Interaksi / Penampilan',
+        schedule6: 'Acara selesai',
+        mapTitle: 'Navigasi Lokasi',
+        mapPlace: 'Lokasi Pernikahan: <strong>[Alamat Lengkap]</strong>',
+        mapButton: 'Lihat Peta / Menuju Lokasi',
+        galleryTitle: 'Kenangan Kami',
+        photo1: 'Foto Pernikahan',
+        photo2: 'Foto Harian',
+        photo3: 'Foto Lamaran',
+        photo4: 'Foto Perjalanan',
+        photo5: 'Foto Pertunangan',
+        photo6: 'Kenangan Lainnya',
+        blessingFormTitle: 'Isi Ucapan',
+        blessingFormIntro: 'Silakan tinggalkan nama dan ucapan Anda. Setiap doa akan kami simpan dengan penuh rasa syukur.',
+        guestNameLabel: 'Nama Anda',
+        guestNamePlaceholder: 'Masukkan nama Anda',
+        blessingLabel: 'Ucapan Selamat',
+        blessingPlaceholder: 'Tulis ucapan Anda untuk kedua mempelai',
+        blessingSubmit: 'Kirim Ucapan',
+        blessingWallTitle: 'Ucapan Tamu',
+        blessingWallSubtitle: 'Ucapan dari para tamu akan ditampilkan di sini.',
+        emptyBlessing: 'Belum ada ucapan. Jadilah yang pertama memberikan doa.',
+        moreBlessingText: 'Lihat lebih banyak ucapan (total {count})',
+        collapseBlessing: 'Tutup ucapan',
+        giftTitle: 'Metode Hadiah',
+        giftIntro: 'Jika ingin mengirimkan tanda kasih, silakan klik amplop merah di bawah untuk melihat informasi rekening.',
+        hongbaoTitle: 'Semoga Berlimpah Rezeki',
+        hongbaoOpen: 'Buka Amplop Merah',
+        hongbaoOpened: 'Amplop Sudah Dibuka',
+        hongbaoHint: 'Sentuh untuk melihat info rekening',
+        bankInfoTitle: 'Informasi Rekening Bank',
+        bankCard1: 'Rekening Bank 1',
+        bankCard2: 'Rekening Bank 2',
+        bankName: 'Nama Bank',
+        bankNameValue: '[填写银行名称]',
+        cardHolder: 'Nama Pemilik Rekening',
+        cardHolderValue: '[填写持卡人姓名]',
+        cardNo: 'Nomor Rekening',
+        cardNoValue: '[填写银行卡号]',
+        usdtTitle: 'Alamat USDT',
+        usdtValue: '[填写U地址]',
+        finalBlessingTitle: 'Ucapan Terima Kasih',
+        finalBlessingText: 'Terima kasih atas doa dan berkat Anda. Kehadiran Anda akan membuat pernikahan kami semakin sempurna.',
+        footerThanks: 'Terima kasih atas kehadiran dan doa Anda.',
+        footerWish: 'Semoga kami dapat melangkah ke masa depan baru dengan cinta dan doa restu.',
+        footerSeeYou: 'Kami menantikan kehadiran Anda',
+        alertFillBlessing: 'Silakan isi nama dan ucapan Anda.',
+        alertBlessingSaved: 'Terima kasih! Ucapan Anda sudah ditampilkan di bawah.',
+        alertMusicMissing: 'Silakan tambahkan file music.mp3 terlebih dahulu, atau hapus tombol musik.'
+      },
+      en: {
+        pageTitle: 'Wedding Invitation of Li Yiqi & Fu Shui’e',
+        musicLabel: 'Play music',
+        subtitle: 'You are warmly invited to our wedding',
+        photoMain: 'Couple Photo',
+        photoSmall: 'Replace with cover.jpg',
+        openButton: 'Open Our Moment of Happiness',
+        tapText: 'Tap to open',
+        coverHint: 'Please tap to open the invitation',
+        inviteTitle: 'Invitation',
+        dearGuest: 'Dear <strong>family, friends, brothers and sisters</strong>,',
+        inviteP1: 'We are about to begin a new chapter in life, and we are honored to invite you to witness our special moment.',
+        inviteP2: 'We hope you can join us on this special day to share joy, blessings, and beautiful memories.',
+        inviteP3: 'We look forward to your presence.',
+        signature: '李翊旗 & 傅水娥 敬邀',
+        coupleTitle: 'About the Couple',
+        groomIntroTitle: 'Groom: 李翊旗',
+        groomIntroText: 'Gentle, steady, and responsible',
+        brideIntroTitle: 'Bride: 傅水娥',
+        brideIntroText: 'Kind, lovely, and warm',
+        coupleStory: 'From meeting, to knowing each other, to falling in love, we are grateful that destiny brought us together. In the days ahead, we will walk hand in hand and begin a new life together.',
+        infoTitle: 'Wedding Information',
+        infoDateTitle: 'Wedding Date',
+        infoDateValue: 'December 24, 2026',
+        infoTimeTitle: 'Wedding Time',
+        infoTimeValue: '[Morning/Afternoon/Evening Time]',
+        infoPlaceTitle: 'Wedding Venue',
+        infoPlaceValue: '[Hotel/Banquet Hall/Address]',
+        infoHallTitle: 'Hall',
+        infoHallValue: '[Hall name, remove if not needed]',
+        scheduleTitle: 'Wedding Schedule',
+        schedule1: 'Guest check-in',
+        schedule2: 'Wedding ceremony begins',
+        schedule3: 'Group photos',
+        schedule4: 'Wedding banquet begins',
+        schedule5: 'Toast / Interaction / Performance',
+        schedule6: 'Wedding ends',
+        mapTitle: 'Map & Navigation',
+        mapPlace: 'Wedding Venue: <strong>[Full Address]</strong>',
+        mapButton: 'View Map / Go to Venue',
+        galleryTitle: 'Our Memories',
+        photo1: 'Wedding Photos',
+        photo2: 'Daily Photos',
+        photo3: 'Proposal Photos',
+        photo4: 'Travel Photos',
+        photo5: 'Engagement Photos',
+        photo6: 'More Memories',
+        blessingFormTitle: 'Leave a Blessing',
+        blessingFormIntro: 'Please leave your name and blessing. We will treasure every heartfelt message.',
+        guestNameLabel: 'Your Name',
+        guestNamePlaceholder: 'Enter your name',
+        blessingLabel: 'Blessing Message',
+        blessingPlaceholder: 'Write your message for the couple',
+        blessingSubmit: 'Send Blessing',
+        blessingWallTitle: 'Guest Blessings',
+        blessingWallSubtitle: 'Blessings from guests will be shown here.',
+        emptyBlessing: 'No blessings yet. Be the first to leave one.',
+        moreBlessingText: 'View more blessings ({count} total)',
+        collapseBlessing: 'Collapse blessings',
+        giftTitle: 'Gift Information',
+        giftIntro: 'To send your blessing gift, tap the red packet below to view the payment information.',
+        hongbaoTitle: 'Best Wishes',
+        hongbaoOpen: 'Open Red Packet',
+        hongbaoOpened: 'Red Packet Opened',
+        hongbaoHint: 'Tap to view payment info',
+        bankInfoTitle: 'Bank Account Information',
+        bankCard1: 'Bank Account 1',
+        bankCard2: 'Bank Account 2',
+        bankName: 'Bank Name',
+        bankNameValue: '[填写银行名称]',
+        cardHolder: 'Account Holder',
+        cardHolderValue: '[填写持卡人姓名]',
+        cardNo: 'Account Number',
+        cardNoValue: '[填写银行卡号]',
+        usdtTitle: 'USDT Address',
+        usdtValue: '[填写U地址]',
+        finalBlessingTitle: 'Thank You',
+        finalBlessingText: 'Thank you for your blessings. Your presence will make our wedding even more meaningful.',
+        footerThanks: 'Thank you for witnessing and blessing us.',
+        footerWish: 'May we walk into a new future together with love and blessings.',
+        footerSeeYou: 'We look forward to seeing you',
+        alertFillBlessing: 'Please enter your name and blessing message.',
+        alertBlessingSaved: 'Thank you! Your blessing is now shown below.',
+        alertMusicMissing: 'Please add the music.mp3 file first, or remove the music button.'
+      }
+    };
+
+    function t(key, replacements = {}) {
+      let value = (translations[currentLang] && translations[currentLang][key]) || translations.zh[key] || key;
+      Object.entries(replacements).forEach(([name, replacement]) => {
+        value = value.replace(`{${name}}`, replacement);
+      });
+      return value;
+    }
+
+    function setHtml(selector, key) {
+      const el = document.querySelector(selector);
+      if (el) el.innerHTML = t(key);
+    }
+
+    function setText(selector, key) {
+      const el = document.querySelector(selector);
+      if (el) el.textContent = t(key);
+    }
+
+    function setPlaceholder(selector, key) {
+      const el = document.querySelector(selector);
+      if (el) el.setAttribute('placeholder', t(key));
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      localStorage.setItem('wedding_lang_li_fu', lang);
+
+      document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+      document.title = t('pageTitle');
+      document.body.classList.remove('lang-zh', 'lang-id', 'lang-en');
+      document.body.classList.add(`lang-${lang}`);
+
+      document.querySelectorAll('.language-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      const music = document.getElementById('musicBtn');
+      if (music) music.setAttribute('aria-label', t('musicLabel'));
+
+      setText('.subtitle', 'subtitle');
+      setText('.photo-placeholder-main span', 'photoMain');
+      setText('.photo-placeholder-main small', 'photoSmall');
+      setText('#openInvitation', 'openButton');
+      setText('.tap-text', 'tapText');
+      setText('.cover .hint', 'coverHint');
+
+      const titles = document.querySelectorAll('.section-title');
+      const titleKeys = ['inviteTitle', 'coupleTitle', 'infoTitle', 'scheduleTitle', 'mapTitle', 'galleryTitle', 'blessingFormTitle', 'giftTitle', 'finalBlessingTitle'];
+      titleKeys.forEach((key, index) => {
+        if (titles[index]) titles[index].textContent = t(key);
+      });
+
+      const inviteCard = document.querySelector('#invite .card');
+      if (inviteCard) {
+        const ps = inviteCard.querySelectorAll('p');
+        if (ps[0]) ps[0].innerHTML = t('dearGuest');
+        if (ps[1]) ps[1].textContent = t('inviteP1');
+        if (ps[2]) ps[2].textContent = t('inviteP2');
+        if (ps[3]) ps[3].textContent = t('inviteP3');
+        if (ps[4]) ps[4].textContent = t('signature');
+      }
+
+      const people = document.querySelectorAll('.person');
+      if (people[0]) {
+        people[0].querySelector('h3').textContent = t('groomIntroTitle');
+        people[0].querySelector('p').textContent = t('groomIntroText');
+      }
+      if (people[1]) {
+        people[1].querySelector('h3').textContent = t('brideIntroTitle');
+        people[1].querySelector('p').textContent = t('brideIntroText');
+      }
+
+      const coupleStory = document.querySelectorAll('#invite + section .card > p');
+      if (coupleStory[0]) coupleStory[0].textContent = t('coupleStory');
+
+      const infoItems = document.querySelectorAll('#info .info-item');
+      const infoPairs = [
+        ['infoDateTitle', 'infoDateValue'],
+        ['infoTimeTitle', 'infoTimeValue'],
+        ['infoPlaceTitle', 'infoPlaceValue'],
+        ['infoHallTitle', 'infoHallValue']
+      ];
+      infoPairs.forEach((pair, index) => {
+        if (infoItems[index]) {
+          infoItems[index].innerHTML = `<strong>${t(pair[0])}</strong><br />${t(pair[1])}`;
+        }
+      });
+
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      ['schedule1', 'schedule2', 'schedule3', 'schedule4', 'schedule5', 'schedule6'].forEach((key, index) => {
+        const label = timelineItems[index]?.querySelector('span:last-child');
+        if (label) label.textContent = t(key);
+      });
+
+      const mapBox = document.querySelector('.map-box');
+      if (mapBox) {
+        const ps = mapBox.querySelectorAll('p');
+        if (ps[0]) ps[0].innerHTML = t('mapPlace');
+        const mapBtn = mapBox.querySelector('.button');
+        if (mapBtn) mapBtn.textContent = t('mapButton');
+      }
+
+      document.querySelectorAll('.gallery .photo span').forEach((el, index) => {
+        const key = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5', 'photo6'][index];
+        if (key) el.textContent = t(key);
+      });
+
+      const blessingSection = document.querySelector('#rsvp .card');
+      if (blessingSection) {
+        const intro = blessingSection.querySelector(':scope > p');
+        if (intro) intro.textContent = t('blessingFormIntro');
+      }
+
+      const formLabels = document.querySelectorAll('.form-field');
+      if (formLabels[0]) formLabels[0].querySelector('span').textContent = t('guestNameLabel');
+      if (formLabels[1]) formLabels[1].querySelector('span').textContent = t('blessingLabel');
+      setPlaceholder('input[name="guestName"]', 'guestNamePlaceholder');
+      setPlaceholder('textarea[name="blessing"]', 'blessingPlaceholder');
+      const submitBtn = document.querySelector('.blessing-form .button');
+      if (submitBtn) submitBtn.textContent = t('blessingSubmit');
+
+      setText('.blessing-wall-title', 'blessingWallTitle');
+      setText('.blessing-wall-subtitle', 'blessingWallSubtitle');
+
+      const giftCard = document.querySelector('#gift-info .gift-card');
+      if (giftCard) {
+        const intro = giftCard.querySelector(':scope > p');
+        if (intro) intro.textContent = t('giftIntro');
+      }
+      setText('.hongbao-title', 'hongbaoTitle');
+      const hongbaoOpenText = document.querySelector('.hongbao-open-text');
+      const giftPanel = document.getElementById('giftHiddenContent');
+      if (hongbaoOpenText) {
+        hongbaoOpenText.textContent = giftPanel?.classList.contains('show') ? t('hongbaoOpened') : t('hongbaoOpen');
+      }
+
+      setText('.bank-panel-title', 'bankInfoTitle');
+      const bankTitles = document.querySelectorAll('.bank-account-title');
+      if (bankTitles[0]) bankTitles[0].textContent = t('bankCard1');
+      if (bankTitles[1]) bankTitles[1].textContent = t('bankCard2');
+
+      document.querySelectorAll('.bank-account').forEach(account => {
+        const rows = account.querySelectorAll('.bank-row');
+
+        if (rows[0]) {
+          const label = rows[0].querySelector('.bank-label');
+          if (label) label.textContent = t('bankName');
+        }
+
+        if (rows[1]) {
+          const label = rows[1].querySelector('.bank-label');
+          if (label) label.textContent = t('cardHolder');
+        }
+
+        if (rows[2]) {
+          const label = rows[2].querySelector('.bank-label');
+          if (label) label.textContent = t('cardNo');
+        }
+      });
+
+      setText('.usdt-title', 'usdtTitle');
+      // 收款资料内容固定不翻译，只翻译标题/标签。
+      // 你填写好的银行名称、持卡人、卡号、USDT 地址，切换语言时都会保持原文。
+
+      const finalBlessingCard = document.querySelector('#gift-info + section .card');
+      if (finalBlessingCard) {
+        const p = finalBlessingCard.querySelector('p');
+        if (p) p.textContent = t('finalBlessingText');
+      }
+
+      const footer = document.querySelector('.footer .card');
+      if (footer) {
+        const ps = footer.querySelectorAll('p');
+        if (ps[0]) ps[0].textContent = t('footerThanks');
+        if (ps[1]) ps[1].textContent = t('footerWish');
+        if (ps[2]) ps[2].innerHTML = `<strong>${t('footerSeeYou')}</strong>`;
+      }
+
+      renderBlessings();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.language-btn').forEach(btn => {
+        btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+      });
+      applyLanguage(currentLang);
+      renderBlessings();
+      fetch('content/settings.json')
+        .then(response => response.ok ? response.json() : null)
+        .then(settings => { cmsSettings = settings; applyCmsSettings(); })
+        .catch(() => {});
+    });
+
+
+    function toggleGiftInfo() {
+      const panel = document.getElementById('giftHiddenContent');
+      const trigger = document.getElementById('hongbaoTrigger');
+      if (!panel || !trigger) return;
+
+      const opened = panel.classList.toggle('show');
+      trigger.setAttribute('aria-expanded', opened ? 'true' : 'false');
+
+      const openText = trigger.querySelector('.hongbao-open-text');
+      if (openText) {
+        openText.textContent = opened ? t('hongbaoOpened') : t('hongbaoOpen');
+      }
+
+      if (opened) {
+        setTimeout(() => {
+          panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 180);
+      }
+    }
+
+    const openBtn = document.getElementById('openInvitation');
+    const invitationContent = document.getElementById('invitationContent');
+
+    openBtn.addEventListener('click', async () => {
+      invitationContent.classList.add('show');
+
+      try {
+        await bgMusic.play();
+        musicBtn.textContent = '♫';
+        playing = true;
+      } catch (err) {
+        console.log('Music play needs user interaction or music.mp3 is missing.');
+      }
+
+      setTimeout(() => {
+        invitationContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    });
+  </script>
+</body>
+</html>

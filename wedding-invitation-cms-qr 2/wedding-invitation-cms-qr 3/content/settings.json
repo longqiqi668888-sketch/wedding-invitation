@@ -1,0 +1,22 @@
+{
+  "groom": "李翊旗",
+  "bride": "傅水娥",
+  "date_zh": "2026年12月24日",
+  "date_id": "24 Desember 2026",
+  "date_en": "December 24, 2026",
+  "time": "[上午/下午/晚上 时间]",
+  "venue": "[酒店/宴会厅/地址]",
+  "hall": "[厅名，没有可删除]",
+  "address": "[完整地址]",
+  "map_url": "https://maps.google.com/?q=[完整地址]",
+  "invitation": "我们将携手步入人生的新篇章，诚挚邀请您见证这一重要时刻。",
+  "groom_intro": "[填写新郎介绍]",
+  "bride_intro": "[填写新娘介绍]",
+  "bank_1_name": "[填写银行名称]",
+  "bank_1_holder": "[填写持卡人姓名]",
+  "bank_1_number": "[填写银行卡号]",
+  "bank_2_name": "[填写银行名称]",
+  "bank_2_holder": "[填写持卡人姓名]",
+  "bank_2_number": "[填写银行卡号]",
+  "usdt": "[填写U地址]"
+}

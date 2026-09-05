@@ -1,0 +1,35 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: images
+public_folder: /images
+
+collections:
+  - name: wedding
+    label: 婚礼请帖内容
+    files:
+      - name: settings
+        label: 编辑请帖
+        file: content/settings.json
+        fields:
+          - { label: 新郎姓名, name: groom, widget: string }
+          - { label: 新娘姓名, name: bride, widget: string }
+          - { label: 婚礼日期（中文）, name: date_zh, widget: string }
+          - { label: 婚礼日期（印尼语）, name: date_id, widget: string }
+          - { label: 婚礼日期（英语）, name: date_en, widget: string }
+          - { label: 婚礼时间, name: time, widget: string }
+          - { label: 婚礼地点, name: venue, widget: string }
+          - { label: 宴会厅, name: hall, widget: string }
+          - { label: 完整地址, name: address, widget: string }
+          - { label: Google 地图链接, name: map_url, widget: string }
+          - { label: 邀请语, name: invitation, widget: text }
+          - { label: 新郎介绍, name: groom_intro, widget: text }
+          - { label: 新娘介绍, name: bride_intro, widget: text }
+          - { label: 银行卡 1－银行名称, name: bank_1_name, widget: string, required: false }
+          - { label: 银行卡 1－持卡人, name: bank_1_holder, widget: string, required: false }
+          - { label: 银行卡 1－卡号, name: bank_1_number, widget: string, required: false }
+          - { label: 银行卡 2－银行名称, name: bank_2_name, widget: string, required: false }
+          - { label: 银行卡 2－持卡人, name: bank_2_holder, widget: string, required: false }
+          - { label: 银行卡 2－卡号, name: bank_2_number, widget: string, required: false }
+          - { label: USDT 地址, name: usdt, widget: string, required: false }
